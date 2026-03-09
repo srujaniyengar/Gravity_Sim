@@ -68,12 +68,14 @@ const SimPanel: React.FC<SimPanelProps> = ({ algorithm, onAlgorithmChange, label
         </span>
       </div>
 
-      <TopologyMap
-        nodes={state.nodes}
-        tasks={state.tasks}
-        simTime={state.simTime}
-        gossipInterval={config.gossipInterval}
-      />
+      <div className="w-full overflow-x-auto pb-2 border-3 border-nb-border bg-nb-bg shadow-brutal scrollbar-thin">
+        <TopologyMap
+          nodes={state.nodes}
+          tasks={state.tasks}
+          simTime={state.simTime}
+          gossipInterval={config.gossipInterval}
+        />
+      </div>
 
       <AnalyticsDashboard metrics={state.metrics} simTime={state.simTime} />
       <CodeTrace algorithm={algorithm} lastLog={state.lastDecisionLog} isRunning={state.isRunning} />
@@ -95,9 +97,9 @@ export const VisAlgo: React.FC = () => {
   const [algB, setAlgB] = useState<AlgorithmType>('gravity');
 
   return (
-    <div className="flex gap-4 w-full">
+    <div className="flex flex-col lg:flex-row gap-4 w-full">
       <SimPanel algorithm={algA} onAlgorithmChange={setAlgA} label="A" />
-      <div className="w-1 bg-nb-border self-stretch flex-shrink-0" />
+      <div className="w-full lg:w-1 h-1 lg:h-auto bg-nb-border self-stretch flex-shrink-0 my-4 lg:my-0" />
       <SimPanel algorithm={algB} onAlgorithmChange={setAlgB} label="B" />
     </div>
   );

@@ -13,7 +13,7 @@ export const HomePage: React.FC = () => {
               <Orbit size={48} className="text-nb-accent" strokeWidth={2.5} />
             </div>
           </div>
-          <h1 className="text-5xl font-black uppercase tracking-tight text-black leading-none">
+          <h1 className="text-4xl sm:text-5xl font-black uppercase tracking-tight text-black leading-none">
             Gravity
           </h1>
           <p className="text-sm font-bold uppercase tracking-widest text-nb-text mt-2 bg-nb-bg inline-block px-3 py-1 border-2 border-nb-border">
@@ -35,7 +35,7 @@ export const HomePage: React.FC = () => {
         </div>
 
         {/* Actions */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Link
             to="/tutorial"
             className="btn-brutal bg-nb-panel border-4 border-nb-border hover:bg-nb-surface

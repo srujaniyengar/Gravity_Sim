@@ -32,7 +32,7 @@ export const TutorialPage: React.FC = () => {
         </Link>
         <div className="flex items-center gap-3">
           <BookOpen strokeWidth={2.5} className="text-nb-purple" />
-          <h1 className="text-lg font-black uppercase tracking-tight text-nb-text m-0">
+          <h1 className="text-base sm:text-lg font-black uppercase tracking-tight text-nb-text m-0">
             Tutorial & Documentation
           </h1>
         </div>
@@ -46,7 +46,7 @@ export const TutorialPage: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto p-6 md:p-10">
+      <div className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-10">
         <div className="max-w-4xl mx-auto space-y-8">
 
           <DocSection title="How to Use the Sandbox" icon={<HelpCircle size={20} />}>

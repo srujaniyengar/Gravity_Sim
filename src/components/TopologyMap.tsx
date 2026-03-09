@@ -65,8 +65,8 @@ export const TopologyMap: React.FC<TopologyMapProps> = ({
 
   return (
     <div
-      className="relative overflow-hidden border-3 border-nb-border shadow-brutal"
-      style={{ width, height, background: '#16162e' }}
+      className="relative overflow-hidden min-w-[520px]"
+      style={{ width, height, background: '#1e1e32' }}
     >
       {/* Grid */}
       <svg className="absolute inset-0" width={width} height={height}>

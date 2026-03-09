@@ -74,7 +74,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ metrics,
 
   return (
     <div className="space-y-3" role="region" aria-label="Simulation metrics">
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
         <MetricCard
           label="P99 Latency"
           value={metrics.p99Latency.toFixed(2)}
@@ -90,7 +90,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ metrics,
           unit="%"
           icon={<Activity size={10} />}
           accentColor="#1a1a2e"
-          bgColor={metrics.oscillationRate > 50 ? '#f43f5e' : metrics.oscillationRate > 25 ? '#fb923c' : '#4ade80'}
+          bgColor={metrics.oscillationRate > 50 ? '#fb7185' : metrics.oscillationRate > 25 ? '#fb923c' : '#34d399'}
           tooltip="How often loads flip-flop — high means unstable routing. 0% = perfectly stable."
         />
         <MetricCard
@@ -102,7 +102,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ metrics,
           unit="px"
           icon={<Route size={10} />}
           accentColor="#1a1a2e"
-          bgColor="#a78bfa"
+          bgColor="#c084fc"
           tooltip="Total distance packets traveled (px ≈ RTT). Lower means the algorithm prefers nearby nodes."
         />
       </div>
