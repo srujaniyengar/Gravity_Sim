@@ -7,7 +7,6 @@ interface TopologyMapProps {
   tasks: Task[];
   simTime: number;
   gossipInterval: number;
-  onMoveNode?: (id: string, x: number, y: number) => void;
   width?: number;
   height?: number;
 }
@@ -43,7 +42,6 @@ export const TopologyMap: React.FC<TopologyMapProps> = ({
   tasks,
   simTime,
   gossipInterval,
-  onMoveNode,
   width = 520,
   height = 360,
 }) => {
@@ -105,37 +103,14 @@ export const TopologyMap: React.FC<TopologyMapProps> = ({
         const color = getNodeColor(node, simTime, gossipInterval);
         const size = 16;
         return (
-          <motion.div
+          <div
             key={node.id}
-            drag
-            dragMomentum={false}
-            onDragEnd={(_, info) => {
-              // Get the actual resulting x/y relative to the parent
-              // We just offset by the drag distance. Framer Motion tracks internal state,
-              // but we need to update our strict React state.
-              if (onMoveNode) {
-                // Info.offset represents how far it moved from its *original* CSS position
-                // because Framer Motion uses translate3d over the base CSS left/top.
-                const newX = Math.max(10, Math.min(width - 10, node.x + info.offset.x));
-                const newY = Math.max(10, Math.min(height - 10, node.y + info.offset.y));
-                onMoveNode(node.id, newX, newY);
-              }
-            }}
-            // We use animate to smoothly snap to new positions, but during drag it moves instantly
-            animate={{ x: node.x - size / 2, y: node.y - size / 2 }}
-            transition={{ type: 'spring', bounce: 0, duration: 0.2 }}
-            style={{
-              position: 'absolute',
-              width: size,
-              height: size,
-              cursor: onMoveNode ? 'grab' : 'default',
-              zIndex: 10,
-            }}
-            whileDrag={{ cursor: 'grabbing', zIndex: 50, scale: 1.2 }}
+            className="absolute"
+            style={{ left: node.x - size / 2, top: node.y - size / 2, width: size, height: size, zIndex: 10 }}
           >
             {/* Node square */}
             <div
-              className={`w-full h-full border-2 ${onMoveNode ? 'hover:border-nb-accent' : ''} transition-colors`}
+              className="w-full h-full border-2 transition-colors"
               style={{
                 backgroundColor: color.bg,
                 borderColor: color.border,
@@ -165,11 +140,11 @@ export const TopologyMap: React.FC<TopologyMapProps> = ({
                 className="h-full"
                 style={{
                   width: `${node.actualLoad * 100}%`,
-                  backgroundColor: node.actualLoad > 0.85 ? '#f43f5e' : node.actualLoad > 0.5 ? '#fb923c' : '#4ade80',
+                  backgroundColor: node.actualLoad > 0.85 ? '#fb7185' : node.actualLoad > 0.5 ? '#fb923c' : '#34d399',
                 }}
               />
             </div>
-          </motion.div>
+          </div>
         );
       })}
 

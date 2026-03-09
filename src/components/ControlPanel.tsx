@@ -128,7 +128,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
           </button>
         )}
         <button
-          onClick={onReset}
+          onClick={() => onReset()}
           className="btn-brutal px-4 py-2.5 bg-nb-surface text-nb-text-dim"
           aria-label="Reset simulation"
         >
