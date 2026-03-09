@@ -72,7 +72,7 @@ export const DEFAULT_CONFIG: SimConfig = {
   paranoia: 1.5,
   distanceExponent: 2,
   epsilon: 1e-6,
-  nodeCount: 14,
+  nodeCount: 5,
   travelSpeed: 200,
   processingTime: 0.8,
 };

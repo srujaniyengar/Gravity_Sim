@@ -13,10 +13,10 @@ export const HomePage: React.FC = () => {
               <Orbit size={48} className="text-nb-accent" strokeWidth={2.5} />
             </div>
           </div>
-          <h1 className="text-5xl font-black uppercase tracking-tight text-nb-border leading-none">
+          <h1 className="text-5xl font-black uppercase tracking-tight text-black leading-none">
             Gravity
           </h1>
-          <p className="text-sm font-bold uppercase tracking-widest text-nb-border mt-2 bg-nb-bg inline-block px-3 py-1 border-2 border-nb-border">
+          <p className="text-sm font-bold uppercase tracking-widest text-nb-text mt-2 bg-nb-bg inline-block px-3 py-1 border-2 border-nb-border">
             Edge Routing Simulation Framework
           </p>
         </div>

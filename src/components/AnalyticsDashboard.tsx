@@ -19,7 +19,7 @@ interface MetricCardProps {
 
 const MetricCard: React.FC<MetricCardProps> = ({ label, value, unit, icon, accentColor, bgColor, tooltip }) => (
   <div
-    className="border-3 border-nb-border shadow-brutal-sm p-3 flex flex-col gap-1"
+    className="border-3 border-nb-border shadow-brutal-sm p-3 flex flex-col gap-1 hover-card"
     style={{ backgroundColor: bgColor }}
     title={tooltip}
     role="status"

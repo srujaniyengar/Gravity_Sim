@@ -12,19 +12,19 @@ export default {
       },
       colors: {
         nb: {
-          bg: '#1a1a2e',
-          surface: '#222240',
-          panel: '#2a2a4a',
+          bg: '#1e1e32',          // Lighter dark background
+          surface: '#2d2d4a',     // Distinct surface color
+          panel: '#3b3b5c',       // Brighter panel for contrast 
           border: '#000000',
-          accent: '#facc15',      // Bold yellow
-          green: '#4ade80',
-          red: '#f43f5e',
+          accent: '#fbbf24',      // Brighter, warmer yellow
+          green: '#34d399',       // More vibrant green
+          red: '#fb7185',         // Softer, more visible red
           amber: '#fb923c',
-          purple: '#a78bfa',
+          purple: '#c084fc',      // Lighter purple
           cyan: '#22d3ee',
-          text: '#f5f5f5',
-          'text-dim': '#a1a1aa',
-          muted: '#71717a',
+          text: '#ffffff',        // Pure white for highest contrast
+          'text-dim': '#d4d4d8',  // Brighter gray for dim text
+          muted: '#a1a1aa',       // Visible muted text
         }
       },
       boxShadow: {
