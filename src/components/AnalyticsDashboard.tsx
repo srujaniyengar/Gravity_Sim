@@ -14,12 +14,16 @@ interface MetricCardProps {
   icon: React.ReactNode;
   accentColor: string;
   bgColor: string;
+  tooltip: string;
 }
 
-const MetricCard: React.FC<MetricCardProps> = ({ label, value, unit, icon, accentColor, bgColor }) => (
+const MetricCard: React.FC<MetricCardProps> = ({ label, value, unit, icon, accentColor, bgColor, tooltip }) => (
   <div
     className="border-3 border-nb-border shadow-brutal-sm p-3 flex flex-col gap-1"
     style={{ backgroundColor: bgColor }}
+    title={tooltip}
+    role="status"
+    aria-label={`${label}: ${value}${unit || ''}`}
   >
     <div className="flex items-center gap-1.5 text-[10px] text-nb-border font-black uppercase tracking-wider">
       {icon}
@@ -34,9 +38,13 @@ const MetricCard: React.FC<MetricCardProps> = ({ label, value, unit, icon, accen
 
 // Sparkline
 const Sparkline: React.FC<{ data: number[]; color: string; width?: number; height?: number }> = ({
-  data, color, width = 300, height = 40,
+  data, color, width = 300, height = 44,
 }) => {
-  if (data.length < 2) return null;
+  if (data.length < 2) return (
+    <div className="flex items-center justify-center text-[10px] text-nb-muted font-bold h-11">
+      Waiting for data…
+    </div>
+  );
   const max = Math.max(...data, 0.01);
   const min = Math.min(...data, 0);
   const range = max - min || 1;
@@ -48,15 +56,8 @@ const Sparkline: React.FC<{ data: number[]; color: string; width?: number; heigh
   }).join(' ');
 
   return (
-    <svg width={width} height={height} className="mt-1">
-      <polyline
-        points={points}
-        fill="none"
-        stroke={color}
-        strokeWidth="2.5"
-        strokeLinejoin="bevel"
-      />
-      {/* Dots on last few points */}
+    <svg width={width} height={height} className="mt-1" role="img" aria-label="Latency trend sparkline">
+      <polyline points={points} fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="bevel" />
       {data.slice(-5).map((v, i) => {
         const idx = data.length - 5 + i;
         if (idx < 0) return null;
@@ -72,7 +73,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ metrics,
   const latencySamples = metrics.latencyHistory.slice(-60);
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3" role="region" aria-label="Simulation metrics">
       <div className="grid grid-cols-3 gap-2">
         <MetricCard
           label="P99 Latency"
@@ -81,6 +82,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ metrics,
           icon={<Clock size={10} />}
           accentColor="#1a1a2e"
           bgColor="#22d3ee"
+          tooltip="99th percentile latency — the slowest 1% of requests. Lower is better."
         />
         <MetricCard
           label="Oscillation"
@@ -89,6 +91,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ metrics,
           icon={<Activity size={10} />}
           accentColor="#1a1a2e"
           bgColor={metrics.oscillationRate > 50 ? '#f43f5e' : metrics.oscillationRate > 25 ? '#fb923c' : '#4ade80'}
+          tooltip="How often loads flip-flop — high means unstable routing. 0% = perfectly stable."
         />
         <MetricCard
           label="Net Tax"
@@ -100,6 +103,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ metrics,
           icon={<Route size={10} />}
           accentColor="#1a1a2e"
           bgColor="#a78bfa"
+          tooltip="Total distance packets traveled (px ≈ RTT). Lower means the algorithm prefers nearby nodes."
         />
       </div>
 
