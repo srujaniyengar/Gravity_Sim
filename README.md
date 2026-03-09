@@ -1,10 +1,8 @@
----
-title: Gravity Framework Simulation
----
-
 # Gravity Framework Simulation
 
-A client-side, interactive simulation framework that demonstrates why **Gravity** (a risk-aware, topology-sensitive routing algorithm) can outperform traditional load balancing in edge computing environments. The app focuses on two key realities of distributed systems at the edge: **network distance (RTT)** and **state staleness** (gossip delay), and shows how they influence tail latency and stability.
+Note: This project is a simulation and visualization demo. It is not a reusable routing framework or a production load balancer.
+
+A client-side, interactive simulation that demonstrates why **Gravity** (a risk-aware, topology-sensitive routing algorithm) can outperform traditional load balancing in edge computing environments. The app focuses on two key realities of distributed systems at the edge: **network distance (RTT)** and **state staleness** (gossip delay), and shows how they influence tail latency and stability.
 
 ## What This Project Demonstrates
 
@@ -13,7 +11,7 @@ The simulation compares routing algorithms under identical traffic conditions an
 Key behaviors to observe:
 
 - **Topology sensitivity**: nearby nodes should be preferred when all else is equal.
-- **Staleness effects**: if gossip updates are slower than incoming requests, nodes may appear “free” even when they are not.
+- **Staleness effects**: if gossip updates are slower than incoming requests, nodes may appear free even when they are not.
 - **Thundering Herd (expected under P2C)**: when gossip is infrequent, Power-of-Two choices can repeatedly select nodes with stale low reported load, causing sudden saturation.
 - **Gravity mitigation**: Gravity reduces herd effects by discounting stale information via confidence decay.
 
