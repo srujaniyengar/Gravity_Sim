@@ -296,6 +296,13 @@ export function useGravitySim(
     reset(clamped);
   }, [reset]);
 
+  const moveNode = useCallback((nodeId: string, x: number, y: number) => {
+    setState(s => ({
+      ...s,
+      nodes: s.nodes.map(n => n.id === nodeId ? { ...n, x, y } : n),
+    }));
+  }, []);
+
   // Cleanup on unmount
   useEffect(() => {
     return () => {
@@ -309,6 +316,7 @@ export function useGravitySim(
     config,
     setConfig,
     setNodeCount,
+    moveNode,
     start,
     stop,
     reset,
