@@ -2,7 +2,7 @@
 
 Note: This project is a simulation and visualization demo. It is not a reusable routing framework or a production load balancer.
 
-A client-side, interactive simulation that demonstrates why **Gravity** (a risk-aware, topology-sensitive routing algorithm) can outperform traditional load balancing in edge computing environments. The app focuses on two key realities of distributed systems at the edge: **network distance (RTT)** and **state staleness** (gossip delay), and shows how they influence tail latency and stability.
+A client-side, interactive simulation that demonstrates why **Gravity** (a risk-aware, topology-sensitive routing algorithm) can outperform traditional load balancing in edge computing environments. The app focuses on two key realities of distributed systems at the edge: **network distance (RTT)** and **state staleness** (gossip delay), and shows how they influence tail latency and stability..
 
 ## What This Project Demonstrates
 
